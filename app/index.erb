@@ -1,26 +1,43 @@
-<div class="pageTitle">
-  <h1>ImboredNative</h1>
-</div>
+<div data-role="page" id="main">
+		<div data-role="header" data-position="inline" data-backbtn="false">
+			<a href="#" id="reload_button" data-icon="refresh" class="ui-btn-left" data-transition="flip">Ladda om</a>
+			<h1 class="imbored-text">imBored</h1>		
+			<a href="#settings" id="settings_button" data-icon="gear" class="ui-btn-right" data-transition="flip">Inställningar</a>
+		</div>
+     <div data-role="content">
+        <ul data-role="listview" data-theme="g" id="events">
+         	<li>
+				<h1>EVENT Rubrik</h1>
+				<p><time>fre 15 jan 20:00:00</time>Venue</p> 
+			</li>
+			
+		</ul>
+     </div>		
+ </div>
+	<div data-role="page" data-url="extended-information" id="extended-information" >
+		<div data-role="header" data-position="inline" data-backbtn="false" >
+			<a href="#main" data-icon="arrow-l" class="ui-btn-left" data-transition="slide" data-direction="reverse" >Tillbaka</a>
+		 	<h1 class="imbored-text">imBored More</h1>
+		</div>
+		<div data-role="content">
+			<h2></h2>
+			<h3><time></time></h3>
+			<address>
 
-<div class="toolbar">
-  <% if SyncEngine::logged_in > 0 %>
-      <div class="leftItem blueButton">
-        <a href="<%= url_for :controller => :Settings, :action => :do_sync %>">Sync</a>
-      </div>
-      <div class="rightItem regularButton">
-        <a href="<%= url_for :controller => :Settings, :action => :logout %>">Logout</a>
-      </div>
-  <% else %>
-      <div class="rightItem regularButton">
-        <a href="<%= url_for :controller => :Settings, :action => :login %>">Login</a>
-      </div>
-  <% end %>
-</div>
-
-<div class="content">
-  <ul>
-    <li>
-      <a href="#"><span class="title">Add link here...</span><span class="disclosure_indicator"/></a>
-    </li>
-  </ul>
-</div>
+			</address>
+			<p></p>	
+		</div>
+	</div>
+	<div data-role="page" id="settings" data-url="settings" >
+		<div data-role="header" data-position="inline" data-backbtn="false">
+			<a id="settings_done" href="#main" data-transition="flip" data-icon="check">Klar</a>
+			<h1>Inställningar</h1>
+			<a id="settings_exit" data-transition="flip" href="#main" data-icon="delete">Avbryt</a>
+		</div>
+		<div data-role="content">
+			<div date-role="fieldcontain">
+				<label for="Distance">Avstånd km:</label>
+				<input type="range" name="distance" id="settings_distance" value="0" min="0" max="50" />
+	    	</div>
+		</div>
+	</div>
