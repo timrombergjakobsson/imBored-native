@@ -89,8 +89,8 @@ var get_position = function (callback) {
 			} else {
 				var position = {};
 				position.coords = {};
-				position.coords.longitude = geo[1];
-		        position.coords.latitude = geo[2];
+				position.coords.longitude = geo[2];
+		        position.coords.latitude = geo[1];
 				success_callback(position);
 				
 			}
