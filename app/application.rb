@@ -1,4 +1,5 @@
 require 'rho/rhoapplication'
+require 'debugger'
 
 class AppApplication < Rho::RhoApplication
   def initialize

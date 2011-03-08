@@ -84,3 +84,4 @@ syncserver = ''
 jqtouch_mode=1
 
 splash_screen='zoom'
+debug_host = '127.0.0.1'

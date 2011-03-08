@@ -51,10 +51,10 @@ $(function() {
             get_position();
         }
 		
-    });
+    });                                                                                                                  
 	
     $("#reload_button").click(function() {
-        get_events(user_position, events_received_callback); 
+        get_positions(position_received_callback); 
     });
 
     $(document).ajaxStart(function(){
@@ -71,20 +71,20 @@ $(function() {
  * Tries to retrive the users position and runs either a success or a failure
  * callback.
  */
-function get_position(callback) {
+/*function get_position(callback) {
   
     var callback = callback;
 
     if (navigator.geolocation) {
         var options = {timeout:5000, maximumAge: 600000};
         navigator.geolocation.getCurrentPosition(success_callback, error_callback, options);
-    }   
+    } */  
 
 	function getGeoLocation() { 
-		alert('geobastard');
 
 		$.get("/system/geolocation",function(data){ 
-			  geo = data.split(";"); 
+			  geo = data.split(";");
+			 setTimeout("getGeoLocation()",5000);	
 		});	                                 
 	}
 	getGeoLocation();

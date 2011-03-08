@@ -16,4 +16,4 @@ iphone:
   BundleIdentifier: com.rhomobile.imBored-native
   BundleURLScheme: imBored-native
 
-extensions: ["json", "another-extension"]
+extensions: ["json", "another-extension", "net-http", "debugger"]
