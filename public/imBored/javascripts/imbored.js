@@ -273,5 +273,5 @@ function make_error(message) {
         var element = $("<li>");
         element.append($("<h1>").text(message));
         events_container.append(element);
-    };
+    }
 }
