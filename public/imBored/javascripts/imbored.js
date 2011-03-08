@@ -71,31 +71,30 @@ $(function() {
  * callback.
  */
 var get_position = function (callback) {
-  	getGeoLocation();
+    getGeoLocation();
     var callback = callback;
 
     /*if (navigator.geolocation) {
-        var options = {timeout:5000, maximumAge: 600000};
-        navigator.geolocation.getCurrentPosition(success_callback, error_callback, options);
-    } */  
+      var options = {timeout:5000, maximumAge: 600000};
+      navigator.geolocation.getCurrentPosition(success_callback, error_callback, options);
+      } */  
 
-	function getGeoLocation() { 
-		$.get("/system/geolocation",function(data){ 
-			var geo = data.split(";"); 
-			if (!parseInt(geo[1])){
-				setTimeout(function() { 
-					getGeoLocation();
-					},500);
-			} else {
-				var position = {};
-				position.coords = {};
-				position.coords.longitude = geo[2];
-		        position.coords.latitude = geo[1];
-				success_callback(position);
-				
-			}
-		});	                                 
-	}
+    function getGeoLocation() { 
+        $.get("/system/geolocation",function(data){ 
+            var geo = data.split(";"); 
+            if (!parseInt(geo[1])){
+                setTimeout(function() { 
+                    getGeoLocation();
+                },500);
+            } else {
+                var position = {};
+                position.coords = {};
+                position.coords.longitude = geo[2];
+                position.coords.latitude = geo[1];
+                success_callback(position);
+            }
+        });	                                 
+    }
 
     function success_callback(position) {
 
@@ -110,7 +109,7 @@ var get_position = function (callback) {
         var parameters = {};
         parameters.longitude = position.coords.longitude;
         parameters.latitude = position.coords.latitude;
-		callback(parameters);
+        callback(parameters);
 
     }
     function error_callback(error) {
