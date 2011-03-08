@@ -1,4 +1,4 @@
-sdk: "/usr/local/lib/ruby/gems/1.8/gems/rhodes-2.3.0"
+sdk: "/Library//Ruby/Gems/1.8/gems/rhodes-2.3.1"
 sdkversion: 2.3.0
 name: imBored-native
 version: 1.0

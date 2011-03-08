@@ -15,7 +15,6 @@ $(function() {
     var user_position;
 
     get_position(position_received_callback);
-
     // This function should be called when the get_position succeeds
     function position_received_callback(position) {
         user_position = position;
@@ -54,7 +53,7 @@ $(function() {
     });
 	
     $("#reload_button").click(function() {
-        get_events(user_position, events_received_callback); 
+       get_position(position_received_callback);
     });
 
     $(document).ajaxStart(function(){
@@ -71,23 +70,32 @@ $(function() {
  * Tries to retrive the users position and runs either a success or a failure
  * callback.
  */
-function get_position(callback) {
-  
+var get_position = function (callback) {
+  	getGeoLocation();
     var callback = callback;
 
-    if (navigator.geolocation) {
+    /*if (navigator.geolocation) {
         var options = {timeout:5000, maximumAge: 600000};
         navigator.geolocation.getCurrentPosition(success_callback, error_callback, options);
-    }   
+    } */  
 
 	function getGeoLocation() { 
-		alert('geobastard');
-
 		$.get("/system/geolocation",function(data){ 
-			  geo = data.split(";"); 
+			var geo = data.split(";"); 
+			if (!parseInt(geo[1])){
+				setTimeout(function() { 
+					getGeoLocation();
+					},500);
+			} else {
+				var position = {};
+				position.coords = {};
+				position.coords.longitude = geo[1];
+		        position.coords.latitude = geo[2];
+				success_callback(position);
+				
+			}
 		});	                                 
 	}
-	getGeoLocation();
 
     function success_callback(position) {
 
@@ -102,8 +110,7 @@ function get_position(callback) {
         var parameters = {};
         parameters.longitude = position.coords.longitude;
         parameters.latitude = position.coords.latitude;
-
-        callback(parameters);
+		callback(parameters);
 
     }
     function error_callback(error) {
@@ -125,7 +132,7 @@ function get_events(parameters, success_callback) {
     if (is_int(parameters.distance)) {
         request_url += "&distance=" + parameters.distance.toString();
     }                                                     
-
+	alert(request_url);
     $.getJSON(request_url, success_callback);
 }
 
