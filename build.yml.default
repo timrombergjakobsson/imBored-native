@@ -1,0 +1,28 @@
+---
+name: imbored
+capabilities: 
+- gps
+- pim
+- camera
+- vibrate
+- phone
+- bluetooth
+- calendar
+
+sdk: "/home/antt/.rvm/gems/ruby-1.8.7-p302/gems/rhodes-2.3.1"
+sdkversion: 2.3.1
+version: 1.0.7
+vendor: rhomobile
+build: debug
+bbver: 4.6
+wmsdk: "Windows Mobile 6 Professional SDK (ARMV4I)"
+applog: rholog.txt
+android:
+  version: 2.2
+  # emulator: rhoAndroid
+  capabilities:
+  - network_state
+  - sdcard
+  mapping: yes
+
+extensions: ["json", "rhoxml", "another-extension", "net-http", "debugger"]
