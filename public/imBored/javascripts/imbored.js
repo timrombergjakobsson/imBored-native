@@ -82,10 +82,11 @@ var get_position = function (callback) {
     function getGeoLocation() { 
         $.get("/system/geolocation",function(data){ 
             var geo = data.split(";"); 
+            alert(geo);
             if (!parseInt(geo[1])){
                 setTimeout(function() { 
                     getGeoLocation();
-                },500);
+                },3000);
             } else {
                 var position = {};
                 position.coords = {};
@@ -93,7 +94,7 @@ var get_position = function (callback) {
                 position.coords.latitude = geo[1];
                 success_callback(position);
             }
-        });	                                 
+        });
     }
 
     function success_callback(position) {
